@@ -1,0 +1,49 @@
+  <div class="container row teal lighten-5 z-depth-3">
+    <div class="col s12">
+      <h5 class="col s8">{{vm.user.name}}</h5>
+      <div class="col s4" style="margin: .82rem 0 .656rem 0;">
+        <div class="col s6" style="margin: .1rem 0 0;"> Баланc: <span id="vmUserMany">{{vm.user.many}}</span></div>
+        <a class="waves-effect waves-light btn " ng-click="vm.addMany()"><i class="material-icons left">account_balance_wallet</i>Пополнить</a>
+      </div> 
+    </div>
+  </div>
+<div class="container row " id="myOrder" ng-show="vm.showOrder.myOrder">
+    <div class="collection">
+        <p class="collection-item" ng-repeat="basketItem in vm.user.basket">
+          <span class="badge">{{basketItem.status.name}}</span>{{basketItem.order.title}}
+        </p>
+    </div>
+    <a class="waves-effect waves-light btn " ng-click="vm.addToOrder()"><i class="material-icons left">add</i>Добавить блюдо</a>
+</div>
+
+<div class="container row teal lighten-5 z-depth-3 " id="addToOrder" ng-hide="vm.showOrder.myOrder">
+  <style>
+    .chip { height: 22px; font-size: 11px; line-height: 21px; }
+  </style>
+    <div class="col s12">
+      <h5>Добавить блюдо <a class="btn-flat right" ng-click="vm.myOrder()"><i class="material-icons ">close</i></a></h5>
+    </div>
+  <div class="col s12">
+      <div class="row">
+          <div class="col s4 m4" ng-repeat="foodItem in vm.food">
+            <div class="card sticky-action medium">
+              <div class="card-image waves-effect waves-block waves-light" style="background: url('{{foodItem.image}}'); background-size: cover; min-height: 255px;">
+                <span class="card-title activator" style="text-shadow: 1px 1px 1px black;">{{foodItem.title}}
+                  <i class="material-icons right">more_vert</i>
+                </span>
+              </div>
+              <div class="card-action">
+                <p>Цена: {{foodItem.price}}</p>
+                <p> Рейтинг: {{foodItem.rating}}</p>
+                <a ng-if="foodItem.price <= vm.user.many" ng-click="vm.addToBasket(foodItem.id);" class="btn">Заказать</a>
+                <p ng-if="foodItem.price > vm.user.many" class="teal-text text-darken-4">Пополните балланс на {{foodItem.price-vm.user.many}}</p>
+              </div>
+              <div class="card-reveal">
+                  <span class="card-title grey-text text-darken-4">{{foodItem.title}}<i class="material-icons right">close</i></span>
+                  <div class="chip " ng-repeat="ingredientsItem in foodItem.ingredients track by $index">{{ingredientsItem}}</div>
+                </div>
+             
+          </div>
+        </div>
+  </div>
+</div>

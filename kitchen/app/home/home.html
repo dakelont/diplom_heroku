@@ -1,0 +1,16 @@
+<div class="container row ">
+  <h4>Заказанные блюда</h4>
+    <div class="collection">
+        <p class="collection-item" ng-repeat="basketItem in vm.allOrder | filter: {status: {id: 1}}">
+          <span class="badge"><a class="waves-effect waves-light" ng-click="vm.startCooking(basketItem._id)"><i class="material-icons left">access_time</i>Начать готовить</a></span>{{basketItem.order.title}}
+        </p>
+    </div>
+</div>
+<div class="container row ">
+  <h4>Блюда готовятся</h4>
+    <div class="collection">
+        <p class="collection-item" ng-repeat="basketItem in vm.allOrder | filter: {status: {id: 2}}">
+          <span class="badge"><a class="waves-effect waves-light" ng-click="vm.stopCooking(basketItem._id)"><i class="material-icons left">kitchen</i>Готово</a></span>{{basketItem.order.title}}
+        </p>
+    </div>
+</div>
