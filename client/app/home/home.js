@@ -8,6 +8,7 @@ angular
         vm.user = {id:$stateParams.id};
 
         vm.showOrder = {myOrder: true};
+        vm.showAddToBasket = false;
 
         ClientService.getUser(vm.user.id)
             .then(function(userData) {
@@ -22,6 +23,13 @@ angular
             socket.emit('addToBasket', id);
         }
         socket.on('addToBasket', function(data) {
+            console.log(data);
+            vm.dataAddToBasket = data.order;
+            vm.showAddToBasket = true;
+            $scope.$apply(vm);
+            setTimeout(()=>{
+                vm.showAddToBasket = false;
+            },2000);
         });
         vm.myOrder =function() {
             vm.showOrder = {myOrder: true};

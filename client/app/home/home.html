@@ -19,6 +19,8 @@
 <div class="container row teal lighten-5 z-depth-3 " id="addToOrder" ng-hide="vm.showOrder.myOrder">
   <style>
     .chip { height: 22px; font-size: 11px; line-height: 21px; }
+    .showAddToBasket {position: absolute;bottom: 20px;right: 20px;width: 500px;height: 100px;overflow: hidden;padding: 1px;z-index: 999}
+    .showAddToBasket .card-image {width: 100px;}
   </style>
     <div class="col s12">
       <h5>Добавить блюдо <a class="btn-flat right" ng-click="vm.myOrder()"><i class="material-icons ">close</i></a></h5>
@@ -45,5 +47,16 @@
              
           </div>
         </div>
+  </div>
+</div>
+</div>
+<!---->  
+<div class="card horizontal card-panel teal lighten-2 showAddToBasket" ng-show="vm.showAddToBasket">
+  <div class="card-image" style="background: url('{{vm.dataAddToBasket.image}}'); background-size: cover;"></div>
+  <div class="card-stacked">
+    <div class="card-content">
+      <p>{{vm.dataAddToBasket.title}}</p>
+      <p><b>Заказанно</b></p>
+    </div>
   </div>
 </div>
