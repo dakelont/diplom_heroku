@@ -7,14 +7,6 @@
       </div> 
     </div>
   </div>
-<div class="container row " id="myOrder" ng-show="vm.showOrder.myOrder">
-    <div class="collection">
-        <p class="collection-item" ng-repeat="basketItem in vm.user.basket">
-          <span class="badge">{{basketItem.status.name}}</span>{{basketItem.order.title}}
-        </p>
-    </div>
-    <a class="waves-effect waves-light btn " ng-click="vm.addToOrder()"><i class="material-icons left">add</i>Добавить блюдо</a>
-</div>
 
 <div class="container row teal lighten-5 z-depth-3 " id="addToOrder" ng-hide="vm.showOrder.myOrder">
   <style>
@@ -59,4 +51,13 @@
       <p><b>Заказанно</b></p>
     </div>
   </div>
+</div>
+
+<div class="container row " id="myOrder">
+    <div class="collection">
+        <p class="collection-item" ng-repeat="basketItem in vm.user.basket">
+          <span class="badge">{{basketItem.status.name}}</span>{{basketItem.order.title}}
+        </p>
+    </div>
+    <a class="waves-effect waves-light btn " ng-click="vm.addToOrder()" ng-show="vm.showOrder.myOrder"><i class="material-icons left">add</i>Добавить блюдо</a>
 </div>
